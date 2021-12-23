@@ -1,12 +1,16 @@
 package com.myproject.service;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.myproject.db.StudentDB;
 import com.myproject.model.Student;
 
 public class StudentService {
 
+	private StudentDB db = new StudentDB(); 
+	
 	public List<Student> getStudentList() {
 		List<Student> list = new ArrayList<>();
 		//create 3 student objects
@@ -20,6 +24,17 @@ public class StudentService {
 		list.add(s3); 
 		
 		return list;
+	}
+
+	public void insertStudent(Student s) {
+		try {
+			db.insertStudent(s);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

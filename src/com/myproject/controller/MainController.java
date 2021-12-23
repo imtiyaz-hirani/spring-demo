@@ -38,6 +38,11 @@ public class MainController {
 		StudentService service = new StudentService();//reaching out to service
 		List<Student> list = service.getStudentList();//taking list from the service
 		model.addAttribute("studentList", list);//pass list to jsp 
+		
+		//DB OPS 
+		//insert : 
+		Student s=new Student(11,"pippin clark", "pippin@wot.com", "mumbai");
+		service.insertStudent(s);
 		return "student.jsp";
 	}
 }

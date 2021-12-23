@@ -15,8 +15,9 @@
 	List<Student> list = (List<Student>)request.getAttribute("studentList");
 
 	for(Student s :list){
-		out.println(s + "<br />");
+		out.println(s + "<br />"); 
 	}
 %>
+ 
 </body>
 </html>
