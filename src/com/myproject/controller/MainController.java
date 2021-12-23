@@ -42,7 +42,14 @@ public class MainController {
 		//DB OPS 
 		//insert : 
 		Student s=new Student(11,"pippin clark", "pippin@wot.com", "mumbai");
-		service.insertStudent(s);
+		//service.insertStudent(s);
+		
+		//delete student 
+		int status = service.deleteStudent(11);
+		if(status == 1)
+			System.out.println("Student deleted successfully..");
+		else
+			System.out.println("Operation unsuccessfull");
 		return "student.jsp";
 	}
 }

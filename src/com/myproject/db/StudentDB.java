@@ -46,9 +46,17 @@ public class StudentDB {
 		dbClose();
 	}
 	
-	public void deleteStudent(int id) {
+	public int deleteStudent(int id) throws SQLException, ClassNotFoundException {
+		 dbConnect();
+		 int status; 
+		 String sql="delete from student where stud_id=?";
+		 PreparedStatement pstmt = con.prepareStatement(sql);
+		 pstmt.setInt(1, id);
 		 
-		
+		 status = pstmt.executeUpdate();
+		 dbClose();
+		 
+		 return status; 
 	}
 	
 	public void editStudent() {

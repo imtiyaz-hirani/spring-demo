@@ -37,4 +37,16 @@ public class StudentService {
 		
 	}
 
+	public int deleteStudent(int id) {
+		int status= 0; 
+		try {
+			status = db.deleteStudent(id);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return status;
+	}
+
 }
