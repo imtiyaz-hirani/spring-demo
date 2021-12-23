@@ -10,7 +10,7 @@ import com.myproject.model.Student;
 public class StudentDB {
 	//step 1: creating DB infi variables
 	private String userDB="postgres";
-	private String passDB="oais2ehe";
+	private String passDB="oais2ehe"; //change the password accordingly 
 	private String url="jdbc:postgresql://localhost:5432/postgres";
 	private String driver="org.postgresql.Driver";
 	
