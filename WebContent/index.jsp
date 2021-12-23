@@ -23,6 +23,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#">Courses</a>
         </li>
+         <li class="nav-item">
+          <a class="nav-link" href="<%=request.getContextPath() %>/student">Student</a>
+        </li>
         <li class="nav-item">
         <!-- Expression language (EL) -->
         <!-- PageContext -->

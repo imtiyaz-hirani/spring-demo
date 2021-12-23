@@ -1,10 +1,15 @@
 package com.myproject.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.myproject.model.Student;
+import com.myproject.service.StudentService;
 
 @Controller
 public class MainController {
@@ -26,5 +31,13 @@ public class MainController {
 		String courseName = request.getParameter("courseName");
 		model.addAttribute("courseName", courseName);
 		return "course.jsp";
+	}
+	
+	@RequestMapping("/student")
+	public String viewStudent(Model model) {
+		StudentService service = new StudentService();//reaching out to service
+		List<Student> list = service.getStudentList();//taking list from the service
+		model.addAttribute("studentList", list);//pass list to jsp 
+		return "student.jsp";
 	}
 }
