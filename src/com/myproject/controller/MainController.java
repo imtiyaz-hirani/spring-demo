@@ -44,12 +44,22 @@ public class MainController {
 		Student s=new Student(11,"pippin clark", "pippin@wot.com", "mumbai");
 		//service.insertStudent(s);
 		
-		//delete student 
+		//delete student
+		/*
 		int status = service.deleteStudent(11);
 		if(status == 1)
 			System.out.println("Student deleted successfully..");
 		else
 			System.out.println("Operation unsuccessfull");
+			*/
+		
+		//fetch: select students
+		
+		List<Student> listDB = service.fetchStudents();
+		
+		for(Student stud : listDB) {
+			System.out.println(stud);
+		}
 		return "student.jsp";
 	}
 }

@@ -49,4 +49,16 @@ public class StudentService {
 		return status;
 	}
 
+	public List<Student> fetchStudents() {
+		List<Student> list = new ArrayList<>();
+		try {
+			list = db.fetchStudent();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
 }

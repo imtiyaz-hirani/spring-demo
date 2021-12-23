@@ -3,7 +3,10 @@ package com.myproject.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.myproject.model.Student;
 
@@ -63,8 +66,26 @@ public class StudentDB {
 		
 	}
 	
-	public void fetchStudent() {
+	public List<Student> fetchStudent() throws ClassNotFoundException, SQLException {
+		dbConnect();
+		String sql="select * from student";
+		PreparedStatement pstmt = con.prepareStatement(sql);
+		List<Student> list = new ArrayList<>();
+		ResultSet rst = pstmt.executeQuery();
 		
+		while(rst.next()) {
+			//Read each row in 's' one by one 
+			int id = rst.getInt(1);
+			String name = rst.getString(2);
+			String city = rst.getString(3);
+			String email = rst.getString(4);
+			Student s = new Student(id,name,email,city); 
+			//save 's' in the list
+			list.add(s); //harry 
+			
+		}
+		dbClose();
+		return list; 
 	}
 	
 	public void fetchStudentById() {
