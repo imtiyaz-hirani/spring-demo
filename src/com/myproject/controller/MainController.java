@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.myproject.model.Student;
@@ -26,9 +27,10 @@ public class MainController {
 		return "college.jsp";
 	}
 	
-	@RequestMapping("/course")
-	public String viewCourse(HttpServletRequest request,Model model) {
-		String courseName = request.getParameter("courseName");
+	@RequestMapping("/course/{courseName}")
+	public String viewCourse(@PathVariable("courseName") String courseName,Model model) {
+		System.out.println(courseName);
+		//String courseName = request.getParameter("courseName");
 		model.addAttribute("courseName", courseName);
 		return "course.jsp";
 	}
