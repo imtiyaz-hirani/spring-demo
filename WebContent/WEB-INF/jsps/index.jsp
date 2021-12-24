@@ -56,11 +56,9 @@
     </div>
   </div>
 </nav>
-
-<div>
-	count = <%=request.getAttribute("count") %>
-	${count }
-</div>
+<h1>
+ <%=request.getAttribute("title") %>
+ </h1>
 </body>
 
  

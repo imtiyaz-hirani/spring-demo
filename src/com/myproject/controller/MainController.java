@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.myproject.model.Student;
 import com.myproject.service.StudentService;
@@ -16,23 +18,27 @@ import com.myproject.service.StudentService;
 public class MainController {
 	
 	@RequestMapping("/")
-	public String viewIndex() {
-		return "index.jsp";
+	public ModelAndView viewIndex(ModelAndView mav) {
+		mav.setViewName("index");
+		mav.addObject("title", "Hogwards Magic School");
+		return mav;
 	}
 	
 	@RequestMapping("/college")
-	public String viewCollege(Model model, HttpServletRequest request) {
-		model.addAttribute("count",12);  //setting count=12 : this count is an attribute in jsp
-		request.setAttribute("studentName","harry potter");
-		return "college.jsp";
+	public ModelAndView viewCollege(ModelAndView mav) {
+		mav.addObject("count",12);  //setting count=12 : this count is an attribute in jsp
+		mav.addObject("studentName","harry potter");
+		mav.addObject("title", "Hogwards Magic School");
+		mav.setViewName("college");
+		return mav;
 	}
 	
-	@RequestMapping("/course/{courseName}")
-	public String viewCourse(@PathVariable("courseName") String courseName,Model model) {
+	@RequestMapping("/course")
+	public String viewCourse(@RequestParam("courseName") String courseName, Model model) {
 		System.out.println(courseName);
 		//String courseName = request.getParameter("courseName");
 		model.addAttribute("courseName", courseName);
-		return "course.jsp";
+		return "course";
 	}
 	
 	@RequestMapping("/student")
@@ -62,6 +68,6 @@ public class MainController {
 		for(Student stud : listDB) {
 			System.out.println(stud);
 		}
-		return "student.jsp";
+		return "student";
 	}
 }
