@@ -8,8 +8,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.myproject.model.Student;
+import org.springframework.stereotype.Component;
 
+import com.myproject.model.Student;
+@Component
 public class StudentDB {
 	//step 1: creating DB infi variables
 	private String userDB="postgres";

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,8 @@ import com.myproject.service.StudentService;
 
 @Controller
 public class MainController {
+	@Autowired
+	StudentService service;
 	
 	@RequestMapping("/")
 	public ModelAndView viewIndex(ModelAndView mav) {
@@ -43,7 +46,7 @@ public class MainController {
 	
 	@RequestMapping("/student")
 	public String viewStudent(Model model) {
-		StudentService service = new StudentService();//reaching out to service
+		 
 		List<Student> list = service.getStudentList();//taking list from the service
 		model.addAttribute("studentList", list);//pass list to jsp 
 		

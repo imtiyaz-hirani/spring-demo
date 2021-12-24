@@ -4,12 +4,17 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import com.myproject.db.StudentDB;
 import com.myproject.model.Student;
-
+@Service
 public class StudentService {
 
-	private StudentDB db = new StudentDB(); 
+	@Autowired
+	private StudentDB db; 
 	
 	public List<Student> getStudentList() {
 		List<Student> list = new ArrayList<>();
