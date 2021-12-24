@@ -1,7 +1,10 @@
 package com.myproject.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class Student {
-	private int id;
+	private Integer id;
 	private String name;
 	private String email;
 	private String city;
@@ -19,7 +22,7 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 

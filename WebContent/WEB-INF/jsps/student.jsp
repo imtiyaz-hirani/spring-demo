@@ -10,14 +10,16 @@
 </head>
 <body>
 <h1>Students</h1>
-
-<%
+	
+	<small><%=request.getAttribute("msg") %> </small>
+ 	<hr />
+ 	<% 
 	List<Student> list = (List<Student>)request.getAttribute("studentList");
 
 	for(Student s :list){
 		out.println(s + "<br />"); 
 	}
-%>
  
+	%>
 </body>
 </html>

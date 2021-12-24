@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,11 +20,14 @@ import com.myproject.service.StudentService;
 public class MainController {
 	@Autowired
 	StudentService service;
+	@Autowired
+	Student student;
 	
 	@RequestMapping("/")
 	public ModelAndView viewIndex(ModelAndView mav) {
 		mav.setViewName("index");
 		mav.addObject("title", "Hogwards Magic School");
+		mav.addObject("student", student);
 		return mav;
 	}
 	
@@ -72,5 +76,14 @@ public class MainController {
 			System.out.println(stud);
 		}
 		return "student";
+	}
+	
+	@RequestMapping("/add-student")
+	public String addStudent(@ModelAttribute Student student,Model model) {
+		service.insertStudent(student);
+		List<Student> studentList = service.fetchStudents();
+		model.addAttribute("studentList", studentList);
+		model.addAttribute("msg", "Student with ID " + student.getId() + " registered!!!!");
+		return "student"; 
 	}
 }
