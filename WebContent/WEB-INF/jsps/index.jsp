@@ -76,11 +76,13 @@ body {
 			
 				<fieldset>
 					<legend> Student Registration </legend>
+					<div>
 					ID: <sf:input type="text" path="id" class="form-control" /> <br />
 					Name: <sf:input type="text" path="name" class="form-control" /><br />
 					Email: <sf:input type="text" path="email" class="form-control" /><br />
 					City: <sf:input type="text" path="city" class="form-control" /><br />
 					<input type="submit" value="Register" class="btn btn-primary">
+					</div>
 				</fieldset>
 
 			</sf:form>

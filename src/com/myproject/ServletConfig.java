@@ -1,8 +1,11 @@
 package com.myproject;
 
+import javax.sql.DataSource;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -19,5 +22,12 @@ public class ServletConfig implements WebMvcConfigurer{
 		viewResolver.setPrefix("WEB-INF/jsps/"); //WEB-INF/jsps/index.jsp
 		viewResolver.setSuffix(".jsp");
 		return viewResolver;
+	}
+	 
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource= 
+				new DriverManagerDataSource("jdbc:postgresql://localhost:5432/postgres", "postgres", "oais2ehe");
+		return dataSource; 
 	}
 }
