@@ -1,0 +1,20 @@
+package com.myproject.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.myproject.db.StudentSpringDB;
+import com.myproject.model.Student;
+
+@Service
+public class StudentRestService {
+
+	@Autowired
+	private StudentSpringDB studentSpringDB;
+	
+	public Student getStudentById(int id) {
+		 
+		return studentSpringDB.getStudentById(id);
+	}
+
+}
