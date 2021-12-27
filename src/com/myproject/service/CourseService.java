@@ -19,4 +19,9 @@ public class CourseService {
 		return list;
 	}
 
+	public List<Course> getCoursesByDepartment(String deptName) {
+		List<Course> list =courseDb.getCoursesByDepartment(deptName);
+		return list;
+	}
+
 }

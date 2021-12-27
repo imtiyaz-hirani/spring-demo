@@ -41,4 +41,24 @@ public class CourseDB {
 		return jdbc.query("select * from course", rowMapper);
 	}
 
+	public List<Course> getCoursesByDepartment(String deptName) {
+		RowMapper<Course> rowMapper= new RowMapper<Course>() {
+
+			@Override
+			public Course mapRow(ResultSet rst, int rowNum) throws SQLException {
+				Course c = new Course(); 
+				c.setId(rst.getInt(1));
+				c.setName(rst.getString(2));
+				c.setCredits(rst.getDouble(3));
+				return c;
+			}			
+		};
+		 
+		String sql = "select course_id ,course_name , course_credits from course, department"
+				+ " where course.dept_id=department.dept_id and department.dept_name='" +  deptName + "'";
+		return jdbc.query(sql, rowMapper);
+	}
+	
+	
+
 }
