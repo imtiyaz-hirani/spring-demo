@@ -28,6 +28,7 @@ public class ServletConfig implements WebMvcConfigurer{
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource= 
 				new DriverManagerDataSource("jdbc:postgresql://localhost:5432/postgres", "postgres", "oais2ehe");
+		dataSource.setDriverClassName("org.postgresql.Driver");
 		return dataSource; 
 	}
 }

@@ -22,6 +22,7 @@ public class RestController {
 		//Go to service and fetch all the student data from the DB using Spring-JDBC
 		List<Course> list = courseService.getAllCourses();
 		model.addAttribute("list", list); 
+		System.out.println(list);
 		return "course"; 
 	}
 }
