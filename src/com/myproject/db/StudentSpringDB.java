@@ -56,4 +56,18 @@ public class StudentSpringDB {
 		return jdbc.update("delete from student where stud_id=:id", map);
 	}
 
+	public void postStudent(Student student) {
+		Map<String, Object> map = new HashMap<>(); 
+		 map.put("id", student.getId());
+		 map.put("name", student.getName());
+		 map.put("city", student.getCity());
+		 map.put("email", student.getEmail());
+		 map.put("colgId", 1);
+		String sql="insert into student(stud_id,stud_name,stud_city,stud_email,colg_id) "
+				+ "values(:id,:name,:city,:email,:colgId)";
+		
+		jdbc.update(sql, map);
+		
+	}
+
 }

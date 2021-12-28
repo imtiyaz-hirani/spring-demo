@@ -22,4 +22,10 @@ public class StudentRestService {
 		return studentSpringDB.deleteStudentById(id);
 	}
 
+	public void postStudent(Student student) {
+		
+		studentSpringDB.postStudent(student); 
+		
+	}
+
 }
