@@ -70,4 +70,15 @@ public class StudentSpringDB {
 		
 	}
 
+	public int updateStudent(int id, Student studentNew) {
+		Map<String, Object> map = new HashMap<>(); 
+		 map.put("id", id);
+		 map.put("name", studentNew.getName());
+		 map.put("city", studentNew.getCity());
+		 map.put("email", studentNew.getEmail());
+		String sql=" update student SET stud_name=:name, stud_city=:city, stud_email=:email "
+				+ "where stud_id=:id";
+		return jdbc.update(sql, map);
+	}
+
 }

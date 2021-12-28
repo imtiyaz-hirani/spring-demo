@@ -28,4 +28,9 @@ public class StudentRestService {
 		
 	}
 
+	public int updateStudent(int id, Student studentNew) {
+		
+		return studentSpringDB.updateStudent(id,studentNew);
+	}
+
 }

@@ -72,4 +72,15 @@ public class StudentRestController {
 	public void postStudent(@RequestBody Student student) {
 		studentRestService.postStudent(student); 
 	}
+	
+	@RequestMapping(method = RequestMethod.PUT, value = "/student-update/{id}")
+	public void updateStudent(@RequestBody Student studentNew,@PathVariable("id") int id ) {
+		int status = studentRestService.updateStudent(id,studentNew);
+		if(status == 1)
+			System.out.println("Record updated...");
+		else
+			System.out.println("Record not updated..");
+	}
+	
+	
 } 
