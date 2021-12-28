@@ -17,4 +17,9 @@ public class StudentRestService {
 		return studentSpringDB.getStudentById(id);
 	}
 
+	public int deleteStudentById(int id) {
+		 
+		return studentSpringDB.deleteStudentById(id);
+	}
+
 }

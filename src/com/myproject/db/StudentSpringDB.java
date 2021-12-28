@@ -49,4 +49,11 @@ public class StudentSpringDB {
 	 
 	}
 
+	public int deleteStudentById(int id) {
+		 Map<String, Integer> map = new HashMap<>(); 
+		 map.put("id", id); 
+		 
+		return jdbc.update("delete from student where stud_id=:id", map);
+	}
+
 }

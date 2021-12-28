@@ -29,6 +29,9 @@ public class StudentRestController {
 		return "Hello REST API!!"; 
 	}
 	
+	/*
+	 * gets all student record as JSON
+	 */
 	@RequestMapping(method=RequestMethod.GET, value="/students" ,
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -37,11 +40,28 @@ public class StudentRestController {
 		return list; 
 	}
 	
+	/*
+	 * returns single student based on ID. 
+	 */
+			
 	@ResponseBody
 	@RequestMapping(method = RequestMethod.GET, value="/student/{id}" , 
 			produces = MediaType.APPLICATION_JSON_VALUE)
 	public Student getStudentById(@PathVariable("id") int id) {
 		Student s = studentRestService.getStudentById(id);
 		return s; 
+	}
+	
+	/*
+	 * Delete the Student record based on ID. 
+	 */
+	
+	@RequestMapping(method = RequestMethod.DELETE, value="/student/delete/{id}")
+	public void deleteStudentById(@PathVariable("id") int id) {
+		int status = studentRestService.deleteStudentById(id);
+		if(status == 1)
+			System.out.println("Record deleted...");
+		else
+			System.out.println("Record not deleted..");
 	}
 } 
